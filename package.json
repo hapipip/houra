@@ -4,7 +4,8 @@
   "description": "Hapi based framework",
   "main": "index.js",
   "scripts": {
-    "test": "node --harmony_destructuring node_modules/.bin/lab -cCD tests/"
+    "test": "lab -cCD test/index.js",
+    "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "author": [
     "Clément Pasquier <clement@n00sphere.net>",
@@ -12,20 +13,23 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "boom": "^3.2.2",
     "configue": "^0.10.0",
     "dogwater": "^2.1.0",
-    "glue": "^3.3.0",
+    "glue": "3.2.1",
     "good": "^7.0.1",
     "good-console": "^6.1.2",
     "good-squeeze": "^4.0.0",
-    "hapi": "^14.1.0",
+    "hapi": "13.4.1",
     "hapi-authorization": "^3.0.2",
     "hapi-boom-decorators": "^2.0.0",
     "hapi-named-routes": "^0.3.0",
     "haute-couture": "^1.2.0",
     "hoek": "^4.0.2",
     "inert": "^4.0.1",
+    "jade": "^1.11.0",
+    "joi": "^9.0.4",
     "nconf": "^0.8.4",
     "nconf-yaml": "^1.0.2",
     "poop": "^2.0.2",
@@ -34,12 +38,17 @@
     "sails-mongo": "^0.12.1",
     "sails-mysql": "^0.11.5",
     "sails-postgresql": "^0.11.4",
-    "uhu": "^1.0.0",
+    "uhu": "git+https://github.com/Gastonite/uhu.git",
     "vision": "^4.1.0",
     "waterline": "^0.12.2"
   },
   "devDependencies": {
     "code": "^3.0.2",
+    "fsmonitor": "^0.2.4",
     "lab": "^10.9.0"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
   }
 }
