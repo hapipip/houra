@@ -32,7 +32,8 @@ describe('Houra.initialize', () => {
       return server.start().then(() => {
 
         expect(server._state).to.equal('started');
-      })
+      });
+
     }).catch(error => {
 
       expect(error).to.not.exist();
@@ -56,7 +57,8 @@ describe('Houra.initialize', () => {
 
       return server.start().then(() => {
         expect(server._state).to.equal('started');
-      })
+      });
+
     }).catch(error => {
 
       expect(error).to.not.exist();
