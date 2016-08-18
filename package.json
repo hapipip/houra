@@ -14,26 +14,18 @@
   "license": "MIT",
   "dependencies": {
     "cocobag": "^1.0.0",
-    "dogwater": "^2.1.0",
     "glue": "3.2.1",
     "good": "^7.0.1",
     "good-console": "^6.1.2",
     "good-squeeze": "^4.0.0",
     "hapi": "13.4.1",
-    "inert": "^4.0.1",
-    "sails-disk": "^0.10.10",
-    "sails-memory": "^0.10.7",
-    "sails-mongo": "^0.12.1",
-    "sails-mysql": "^0.11.5",
-    "sails-postgresql": "^0.11.4",
-    "uhu": "^1.0.3",
-    "vision": "^4.1.0",
-    "waterline": "^0.12.2"
+    "joi": "^9.0.4",
+    "uhu": "^1.0.3"
   },
   "devDependencies": {
     "code": "^3.0.2",
     "fsmonitor": "^0.2.4",
-    "jade": "^1.11.0",
+    "hr-test-fixtures": "git@github.com:hapipip/hr-test-fixtures.git",
     "lab": "^10.9.0"
   },
   "engines": {
