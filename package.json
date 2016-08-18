@@ -2,7 +2,7 @@
   "name": "houra",
   "version": "0.1.0",
   "description": "Hapi based framework",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "lab -cCD test/index.js",
     "test-watch": "fsmonitor -s -p '+*.js' npm test"
