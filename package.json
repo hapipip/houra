@@ -13,6 +13,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "cocobag": "^1.0.0",
     "dogwater": "^2.1.0",
     "glue": "3.2.1",
     "good": "^7.0.1",

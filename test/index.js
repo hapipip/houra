@@ -25,6 +25,7 @@ describe('Houra.initialize', () => {
       expect(server).to.be.an.instanceof(Server);
       expect(server._state).to.equal('initialized');
       expect(server.connections).length(1);
+      expect(server.bag).to.exist();
       expect(server.registrations.good).to.exist();
       expect(server.registrations.vision).to.exist();
       expect(server.registrations.inert).to.exist();
