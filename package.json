@@ -26,11 +26,11 @@
   "devDependencies": {
     "code": "^3.0.2",
     "fsmonitor": "^0.2.4",
-    "hr-test-fixtures": "git@github.com:hapipip/hr-test-fixtures.git",
+    "hr-test-fixtures": "git+https://github.com/hapipip/hr-test-fixtures.git",
     "lab": "^10.9.0"
   },
   "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.0.0"
+    "node": ">=6.x.x",
+    "npm": ">=3.x.x"
   }
 }
