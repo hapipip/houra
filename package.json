@@ -25,12 +25,11 @@
   },
   "devDependencies": {
     "code": "^3.0.2",
-    "dogwater": "^2.1.0",
     "fsmonitor": "^0.2.4",
-    "inert": "^4.0.1",
+    "hapi-router": "^3.5.0",
     "lab": "^10.9.0",
-    "vision": "^4.1.0",
-    "waterline": "^0.12.2"
+    "mustache": "^2.2.1",
+    "vision": "^4.1.0"
   },
   "engines": {
     "node": ">=6.x.x",

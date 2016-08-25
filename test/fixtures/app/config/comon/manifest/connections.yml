@@ -1,7 +1,0 @@
-config:
-  - port: 1337
-    labels:
-      - development
-  - port: 80
-    labels:
-      - production
