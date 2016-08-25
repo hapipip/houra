@@ -1,0 +1,5 @@
+database:
+  connection:
+    user: root
+    password: toor
+    database: test
