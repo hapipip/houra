@@ -1,0 +1,13 @@
+manifest:
+  path: manifest
+  plugins:
+    - dogwater
+    - vision
+config:
+  path: config
+  expose:
+    - orm
+structure:
+  template: templates
+  model: models
+  route: routes
