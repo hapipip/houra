@@ -19,21 +19,27 @@ describe('Houra.initialize', () => {
 
   it('Test Houra in normal conditions', () => {
 
-    return Houra.start(
+    return Houra.initialize(
       require('./fixtures/recipe/index'),
       Path.join(__dirname, 'fixtures', 'app')
     ).then(result => {
-      server = result
+      server = result;
 
       expect(server).to.be.an.instanceof(Server);
-      expect(server._state).to.equal('started');
+      expect(server._state).to.equal('initialized');
       expect(server.registrations.vision).to.exist();
       expect(server.bag).to.exist();
       expect(server.bag.get('orm:database:connection:password')).to.equal('toor');
-      return server.inject({url: '/hello'}).then(response => {
-        expect(response.statusCode).to.equal(200);
-        expect(response.payload).to.equal('hello');
+      return server.start().then(() => {
+
+        expect(server._state).to.equal('started');
+
+        return server.inject({url: '/hello'}).then(response => {
+          expect(response.statusCode).to.equal(200);
+          expect(response.payload).to.equal('hello');
+        });
       });
+
 
     }).catch(error => {
       expect(error).to.not.exist();
@@ -42,19 +48,27 @@ describe('Houra.initialize', () => {
 
   it('Test Houra App with manifest and custom plugin', () => {
 
-    return Houra.start(
+    return Houra.initialize(
       require('./fixtures/recipe/index'),
       Path.join(__dirname, 'fixtures', 'app-manifest')
     ).then(result => {
-      server = result
+      server = result;
 
+      expect(server).to.be.an.instanceof(Server);
+      expect(server._state).to.equal('initialized');
       expect(server.registrations.hapipip).to.exist();
       expect(server.plugins.hapipip).to.exist();
       expect(server.plugins.hapipip.hapipip).to.equal('houra');
 
-      return server.inject({url: '/mustache'}).then(response => {
-        expect(response.statusCode).to.equal(200);
-        expect(response.payload).to.equal('hello\n');
+
+      return server.start().then(() => {
+
+        expect(server._state).to.equal('started');
+
+        return server.inject({url: '/mustache'}).then(response => {
+          expect(response.statusCode).to.equal(200);
+          expect(response.payload).to.equal('hello\n');
+        });
       });
 
     }).catch(error => {
@@ -64,11 +78,11 @@ describe('Houra.initialize', () => {
 
   it('Test init Houra with non existent recipe', () => {
 
-    return Houra.start(
+    return Houra.initialize(
       'not-a-recipe',
       Path.join(__dirname, 'fixtures', 'app')
     ).then(result => {
-      server = result
+      server = result;
 
       expect(server).to.not.exist();
     }).catch(error => {
@@ -79,23 +93,30 @@ describe('Houra.initialize', () => {
 
   it('Test init dir error', () => {
 
-    return Houra.start(
+    return Houra.initialize(
       require('./fixtures/recipe/index'),
       Path.join(__dirname, 'fixtures', 'app-manifest')
     ).then(result => {
-      server = result
+      server = result;
 
-      expect(server).to.exist();
-      try {
-        const res = Houra.path('unknown');
-        expect(res).to.not.exist();
-      } catch (err) {
+      expect(server).to.be.an.instanceof(Server);
+      expect(server._state).to.equal('initialized');
+
+      return server.start().then(() => {
+
+        expect(server._state).to.equal('started');
+
+        expect(Houra.path('unknown')).to.not.exist();
+
+      }).catch(err => {
         expect(err).to.exist();
         expect(err.message).to.be.equal("unknown is undefined into your structure.yml")
-      }
+      });
+
+
     }).catch(error => {
       expect(error).to.not.exist();
-      expect(error.message).to.be.equal("Recipe not found : Cannot find module 'not-a-recipe'")
+      //expect(error.message).to.be.equal("Recipe not found : Cannot find module 'not-a-recipe'")
     });
   });
 });
