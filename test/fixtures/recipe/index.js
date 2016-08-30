@@ -1,14 +1,9 @@
 'use strict';
 
-const Fs = require('fs');
 const Recipe = require('./../../../lib/recipe');
 
 const internals = {
   instance: null
-};
-
-internals.computeModelName = (filename) => {
-  return filename.charAt(0).toUpperCase() + filename.slice(1, -3);
 };
 
 internals.WebRecipe = module.exports = class extends Recipe {
