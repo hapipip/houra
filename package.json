@@ -21,6 +21,7 @@
     "good-squeeze": "^4.0.0",
     "hoek": "^4.0.2",
     "joi": "^9.0.4",
+    "maite": "git+https://github.com/hapipip/maite.git#master",
     "uhu": "git+https://github.com/hapipip/uhu.git#master"
   },
   "devDependencies": {
