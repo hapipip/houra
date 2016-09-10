@@ -1,7 +1,6 @@
 manifest:
   path: manifest
   plugins:
-    - dogwater
     - vision
 config:
   path: config

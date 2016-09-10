@@ -12,5 +12,5 @@ module.exports = () => {
         cwd: Houra.root
       }
     }
-  }
-}
+  };
+};
