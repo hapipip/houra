@@ -7,7 +7,6 @@ const Server = require('hapi/lib/server');
 const {expect} = require('code');
 const {describe, it, afterEach} = exports.lab = Lab.script();
 
-
 describe('Houra.initialize', () => {
   let server;
 
