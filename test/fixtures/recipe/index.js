@@ -1,32 +1,27 @@
 'use strict';
 
-const Recipe = require('./../../../lib/recipe');
+const Mustache = require('mustache');
 
-const internals = {
-  instance: null
+module.exports.path = __dirname;
+
+module.exports.initVision = (server, houra) => {
+  server.views({
+    engines: {
+      mustache: {
+        compile: function (template) {
+          Mustache.parse(template);
+          return function (context) {
+            return Mustache.render(template, context);
+          };
+        }
+      }
+    },
+    relativeTo: houra.root,
+    path: houra.relativePath('template')
+  });
 };
 
-internals.WebRecipe = module.exports = class extends Recipe {
-
-  constructor(Houra) {
-    super(Houra, __dirname);
-  }
-
-  initVision(server) {
-    const Mustache = require('mustache');
-    server.views({
-      engines: {
-        mustache: {
-          compile: function (template) {
-            Mustache.parse(template);
-            return function (context) {
-              return Mustache.render(template, context);
-            };
-          }
-        }
-      },
-      relativeTo: this.houra.root,
-      path: this.houra.relativePath('template')
-    });
-  }
+module.exports.recipe = {
+  name: 'houra-test-recipe',
+  version: 'v1.0.0'
 };

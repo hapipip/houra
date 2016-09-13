@@ -7,14 +7,14 @@ const Server = require('hapi/lib/server');
 const {expect} = require('code');
 const {describe, it, afterEach} = exports.lab = Lab.script();
 
-
 describe('Houra.initialize', () => {
   let server;
 
   afterEach(done => {
-    if (server)
+    if (server) {
       server.stop();
-    done()
+    }
+    done();
   });
 
   it('Test Houra in normal conditions', () => {
@@ -87,7 +87,7 @@ describe('Houra.initialize', () => {
       expect(server).to.not.exist();
     }).catch(error => {
       expect(error).to.exist();
-      expect(error.message).to.be.equal("Recipe not found : Cannot find module 'not-a-recipe'")
+      expect(error.message).to.be.equal('Recipe not found: Cannot find module \'not-a-recipe\'');
     });
   });
 
@@ -110,7 +110,7 @@ describe('Houra.initialize', () => {
 
       }).catch(err => {
         expect(err).to.exist();
-        expect(err.message).to.be.equal("unknown is undefined into your structure.yml")
+        expect(err.message).to.be.equal('unknown is undefined into your structure.yml');
       });
 
 

@@ -15,4 +15,4 @@ module.exports = [
       reply.view('index');
     }
   }
-]
+];
