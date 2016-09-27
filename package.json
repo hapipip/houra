@@ -4,7 +4,7 @@
   "description": "Hapi based framework",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -vcCD test/index.js",
+    "test": "lab -vcCD test",
     "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "author": [
@@ -29,7 +29,7 @@
     "eslint": "^3.5.0",
     "fsmonitor": "^0.2.4",
     "hapi-router": "^3.5.0",
-    "lab": "^10.9.0",
+    "lab": "^11.0.1",
     "mustache": "^2.2.1",
     "vision": "^4.1.0"
   },

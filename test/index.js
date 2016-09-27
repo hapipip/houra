@@ -48,75 +48,75 @@ describe('Houra.initialize', () => {
 
   it('Test Houra App with manifest and custom plugin', () => {
 
-    return Houra.initialize(
-      require('./fixtures/recipe/index'),
-      Path.join(__dirname, 'fixtures', 'app-manifest')
-    ).then(result => {
-      server = result;
+   return Houra.initialize(
+     require('./fixtures/recipe/index'),
+     Path.join(__dirname, 'fixtures', 'app-manifest')
+   ).then(result => {
+     server = result;
 
-      expect(server).to.be.an.instanceof(Server);
-      expect(server._state).to.equal('initialized');
-      expect(server.registrations.hapipip).to.exist();
-      expect(server.plugins.hapipip).to.exist();
-      expect(server.plugins.hapipip.hapipip).to.equal('houra');
+     expect(server).to.be.an.instanceof(Server);
+     expect(server._state).to.equal('initialized');
+     expect(server.registrations.hapipip).to.exist();
+     expect(server.plugins.hapipip).to.exist();
+     expect(server.plugins.hapipip.hapipip).to.equal('houra');
 
 
-      return server.start().then(() => {
+     return server.start().then(() => {
 
-        expect(server._state).to.equal('started');
+       expect(server._state).to.equal('started');
 
-        return server.inject({url: '/mustache'}).then(response => {
-          expect(response.statusCode).to.equal(200);
-          expect(response.payload).to.equal('hello\n');
-        });
-      });
+       return server.inject({url: '/mustache'}).then(response => {
+         expect(response.statusCode).to.equal(200);
+         expect(response.payload).to.equal('hello\n');
+       });
+     });
 
-    }).catch(error => {
-      expect(error).to.not.exist();
-    });
+   }).catch(error => {
+     expect(error).to.not.exist();
+   });
   });
 
   it('Test init Houra with non existent recipe', () => {
 
-    return Houra.initialize(
-      'not-a-recipe',
-      Path.join(__dirname, 'fixtures', 'app')
-    ).then(result => {
-      server = result;
+   return Houra.initialize(
+     'not-a-recipe',
+     Path.join(__dirname, 'fixtures', 'app')
+   ).then(result => {
+     server = result;
 
-      expect(server).to.not.exist();
-    }).catch(error => {
-      expect(error).to.exist();
-      expect(error.message).to.be.equal('Recipe not found: Cannot find module \'not-a-recipe\'');
-    });
+     expect(server).to.not.exist();
+   }).catch(error => {
+     expect(error).to.exist();
+     expect(error.message).to.be.equal('Recipe not found: Cannot find module \'not-a-recipe\'');
+   });
   });
 
   it('Test init dir error', () => {
 
-    return Houra.initialize(
-      require('./fixtures/recipe/index'),
-      Path.join(__dirname, 'fixtures', 'app-manifest')
-    ).then(result => {
-      server = result;
+   return Houra.initialize(
+     require('./fixtures/recipe/index'),
+     Path.join(__dirname, 'fixtures', 'app-manifest')
+   ).then(result => {
+     server = result;
 
-      expect(server).to.be.an.instanceof(Server);
-      expect(server._state).to.equal('initialized');
+     expect(server).to.be.an.instanceof(Server);
+     expect(server._state).to.equal('initialized');
 
-      return server.start().then(() => {
+     return server.start().then(() => {
 
-        expect(server._state).to.equal('started');
+       expect(server._state).to.equal('started');
 
-        expect(Houra.path('unknown')).to.not.exist();
+       expect(Houra.path('unknown')).to.not.exist();
 
-      }).catch(err => {
-        expect(err).to.exist();
-        expect(err.message).to.be.equal('unknown is undefined into your structure.yml');
-      });
+     }).catch(err => {
+       expect(err).to.exist();
+       expect(err.message).to.be.equal('unknown is undefined into your structure.yml');
+     });
 
 
-    }).catch(error => {
-      expect(error).to.not.exist();
-      //expect(error.message).to.be.equal("Recipe not found : Cannot find module 'not-a-recipe'")
-    });
+   }).catch(error => {
+     expect(error).to.not.exist();
+     //expect(error.message).to.be.equal("Recipe not found : Cannot find module 'not-a-recipe'")
+   });
   });
 });
